@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "yakorka-notification",
+    "description": "<3 yakorka",
+    "version": "0.0.1",
+    "icons": {
+        "48": "img/yakor48.png",
+        "128": "img/yakor128.png"
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "presistent": false
+    },
+    "permissions": [
+        "https://www.tiktok.com/*",
+        "https://*.tiktokcdn.com/*",
+        "notifications",
+        "storage"
+    ]
+}

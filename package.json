@@ -1,0 +1,14 @@
+{
+    "scripts": {
+        "build": "webpack --mode=production"
+    },
+    "devDependencies": {
+        "@types/chrome": "0.0.133",
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^8.0.0",
+        "ts-loader": "^8.0.18",
+        "typescript": "^4.2.3",
+        "webpack": "^5.26.2",
+        "webpack-cli": "^4.5.0"
+    }
+}
