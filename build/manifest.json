@@ -12,8 +12,9 @@
         "presistent": false
     },
     "permissions": [
-        "https://www.tiktok.com/*",
+        "https://*.tiktok.com/*",
         "https://*.tiktokcdn.com/*",
+        "tabs",
         "notifications",
         "storage"
     ]

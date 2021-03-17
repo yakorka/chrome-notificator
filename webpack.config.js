@@ -4,9 +4,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/extension/background/index.ts',
+    entry: {
+        background: './src/extension/background/index.ts',
+    },
     output: {
-        filename: 'background.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'build')
     },
     module: {
@@ -28,7 +30,8 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 { from: './src/assets/manifest.json', to: './' },
-                { from: './src/assets/img/', to: './img' }
+                { from: './src/assets/img/', to: './img' },
+                { from: './src/assets/audio/', to: './audio' }
             ]
         })
     ]

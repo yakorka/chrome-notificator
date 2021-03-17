@@ -1,10 +1,13 @@
-import { PARSE_SERCONDS_TIMEOUT, PARSE_URL_LINK } from "../utils/constants";
+import { MESSAGE_CHANNEL_DOWNLOAD, PARSE_SERCONDS_TIMEOUT, PARSE_URL_LINK } from "../utils/constants";
+
+let current_video_link: string;
 
 interface IItem {
     desc: string;
     id: string;
     video: {
         cover: string;
+        downloadAddr: string;
         dynamicCover: string;
     }
 };
@@ -44,6 +47,10 @@ const isNewContent = async (id: string): Promise<boolean> => {
     return (await getLastContentId()) !== id;
 };
 
+chrome.notifications.onButtonClicked.addListener(() => {
+    chrome.tabs.create({ url: current_video_link });
+});
+
 setInterval(async () => {
     const response = await fetch(PARSE_URL_LINK, {
         method: 'GET',
@@ -59,13 +66,20 @@ setInterval(async () => {
     if (await isNewContent(contentId)) {
         setLastContentId(contentId);
 
+        current_video_link = data.props.pageProps.items[0].video.downloadAddr;
+
         chrome.notifications.create({
             iconUrl: data.props.pageProps.userInfo.user.avatarMedium,
             imageUrl: data.props.pageProps.items[0].video.dynamicCover,
             title: '@yakorka: новое видево',
             message: data.props.pageProps.items[0].desc,
+            buttons: [
+                { title: "открыть" }
+            ],
             type: 'image'
         });
+
+        new Audio('audio/beep.mp3').play();
     }
     
 }, PARSE_SERCONDS_TIMEOUT * 1000);
