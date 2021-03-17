@@ -1,3 +1,7 @@
+![yakorka](https://i.ibb.co/bWTx8pW/screen01.jpg)
+
+_Google Chrome расширение, которое автоматически уведомляет о новых видео @yakorka_
+
 ### Установка
 
 #### 1. Открыть список расширений Google Chrome
